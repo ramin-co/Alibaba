@@ -15,24 +15,29 @@ const productSchema = mongoose.Schema(
       type: [{ key: { title: { type: String }, value: { type: String } } }],
       required: true,
     },
-    likes: { type: [String] },
+    likes: { type: [String], default: [] },
     disLike: { type: [String] },
-    followers: { type: [mongoose.Schema.Types.ObjectId], ref: "User" },
-    mainCatogeries: {
+    followers: {
       type: [mongoose.Schema.Types.ObjectId],
-      ref: "Catogery",
+      ref: "User",
+      default: [],
+    },
+    mainCatogeries: {
+      type: [String],
       required: true,
     },
     products: {
-      type: [mongoose.Schema.Types.ObjectId],
-      ref: "Product",
+      type: [String],
       default: [],
     },
-    comments: { type: [mongoose.Schema.Types.ObjectId], ref: "Comment" },
+    comments: { type: [String], default: [] },
+    isProducer: { type: Boolean, required: true },
   },
+
   { timestamps: true }
 );
 
 const Product = mongoose.model("Product", productSchema);
-
 module.exports = Product;
+
+//in finally you should change types some of items to main refrence.

@@ -3,6 +3,9 @@ const app = express();
 const mongoose = require("mongoose");
 require("dotenv").config();
 const router = require("./src/routes/index");
+
+app.use(express.json());
+
 app.use("/api", router);
 
 mongoose
