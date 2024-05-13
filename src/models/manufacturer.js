@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 
-const productSchema = mongoose.Schema(
+//in finally you should change types some of items to main refrence.
+
+const manufacturerSchema = mongoose.Schema(
   {
     name: { type: String, required: true },
     desc: { type: String, required: true },
@@ -12,7 +14,7 @@ const productSchema = mongoose.Schema(
     imgGallery: { type: [String], required: true },
     logo: { type: String, required: true },
     moreDetalis: {
-      type: [{ key: { title: { type: String }, value: { type: String } } }],
+      type: [{ title: { type: String }, value: { type: String } }],
       required: true,
     },
     likes: { type: [String], default: [] },
@@ -33,11 +35,8 @@ const productSchema = mongoose.Schema(
     comments: { type: [String], default: [] },
     isProducer: { type: Boolean, required: true },
   },
-
   { timestamps: true }
 );
 
-const Product = mongoose.model("Product", productSchema);
-module.exports = Product;
-
-//in finally you should change types some of items to main refrence.
+const Manufacturer = mongoose.model("Manufacturer", manufacturerSchema);
+module.exports = Manufacturer;
